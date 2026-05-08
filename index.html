@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>오합zl존 | 메커톤 캐릭터 선택</title>
+    <meta name="description" content="오합zl존 메커톤 게임형 웹 포트폴리오">
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="intro-flash">
+      <img src="./assets/ohapzone-title.png" alt="">
+      <button class="intro-start" type="button" id="intro-start">CLICK TO START</button>
+    </div>
+    <div class="intro-narration" aria-hidden="true">
+      <div class="narration-box">
+        <h2>배경</h2>
+        <p>
+          서로 다른 세계에서 레벨을 올려온 다섯 명이 Microsoft AI School 8기에서 만나,
+          함께 해커톤에 도전하게 되었습니다.
+        </p>
+      </div>
+    </div>
+
+    <main class="select-scene" aria-label="오합zl존 캐릭터 선택 화면">
+      <img class="world-bg" src="./assets/fantasy-village-bg.png" alt="">
+      <div class="scene-shade" aria-hidden="true"></div>
+
+      <header class="wood-header">
+        <p>캐릭터 선택</p>
+      </header>
+
+      <p class="version">Ver. 1.0.0</p>
+
+      <section class="stone-logo">
+        <img src="./assets/ohapzone-title.png" alt="오합zl존 OHAPZONE">
+      </section>
+
+      <aside class="portal-label">
+        <span>차원의 거울</span>
+        <strong>만남의 장소</strong>
+      </aside>
+
+      <aside class="goal-sign">
+        <span>메커톤</span>
+        <strong>→</strong>
+      </aside>
+
+      <section class="character-row" aria-label="팀원 캐릭터">
+        <button class="character-slot" type="button" data-member="hyoyeol">
+          <span class="character-platform"></span>
+          <img class="character-img" src="./assets/characters/hyoyeol.png" alt="김효열 캐릭터">
+          <span class="fallback-sprite adel" aria-hidden="true"></span>
+          <span class="name-plate"><em>아델</em> 김효열</span>
+          <span class="mini-card">
+            <small>INFO</small>
+            <strong>김효열</strong>
+            <em>개발 · 반도체 공정 / AI PoC</em>
+            mLua 구현, 핵심 플레이 루프 개발, MVP 범위 조정
+            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+          </span>
+        </button>
+
+        <button class="character-slot" type="button" data-member="gyeongjun">
+          <span class="character-platform"></span>
+          <img class="character-img" src="./assets/characters/gyeongjun.png" alt="문경준 캐릭터">
+          <span class="fallback-sprite luminous" aria-hidden="true"></span>
+          <span class="name-plate"><em>루미너스</em> 문경준</span>
+          <span class="mini-card">
+            <small>INFO</small>
+            <strong>문경준</strong>
+            <em>디자인 · 데이터 분석 / 웹앱</em>
+            UI/UX 디자인, 프로토타이핑, AI 서비스 연결
+            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+          </span>
+        </button>
+
+        <button class="character-slot active" type="button" data-member="sangeun">
+          <span class="character-platform"></span>
+          <img class="character-img" src="./assets/characters/sangeun.png" alt="이상은 캐릭터">
+          <span class="fallback-sprite phantom" aria-hidden="true"></span>
+          <span class="name-plate"><em>팬텀</em> 이상은</span>
+          <span class="mini-card">
+            <small>INFO</small>
+            <strong>이상은</strong>
+            <em>개발 · 건설 / 프론트엔드</em>
+            UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링
+            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+          </span>
+        </button>
+
+        <button class="character-slot" type="button" data-member="jaegyun">
+          <span class="character-platform"></span>
+          <img class="character-img" src="./assets/characters/jaegyun.png" alt="이재균 캐릭터">
+          <span class="fallback-sprite mechanic" aria-hidden="true"></span>
+          <span class="name-plate"><em>메카닉</em> 이재균</span>
+          <span class="mini-card">
+            <small>INFO</small>
+            <strong>이재균</strong>
+            <em>기획 · 교통 / UAM 연구</em>
+            게임 콘셉트·플레이 흐름 설계, PM, AI 기능 보조
+            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+          </span>
+        </button>
+
+        <button class="character-slot" type="button" data-member="yeyoung">
+          <span class="character-platform"></span>
+          <img class="character-img" src="./assets/characters/yeyoung.png" alt="임예영 캐릭터">
+          <span class="fallback-sprite pattern" aria-hidden="true"></span>
+          <span class="name-plate"><em>팬텀</em> 임예영</span>
+          <span class="mini-card">
+            <small>INFO</small>
+            <strong>임예영</strong>
+            <em>기획 · 패션 / 콘텐츠 창작</em>
+            세계관·UX 흐름 기획, UI/UX 설계, 비주얼 방향
+            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+          </span>
+        </button>
+      </section>
+
+      <section class="selection-panel" aria-live="polite">
+        <div class="job-ribbon" id="selected-job">팬텀</div>
+        <h2 id="selected-name">이상은</h2>
+        <p id="selected-role">개발 · 건설 / 프론트엔드</p>
+        <p id="selected-desc">UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링</p>
+      </section>
+
+      <nav class="game-nav" aria-label="게임형 포트폴리오 조작">
+        <button class="nav-button muted" type="button">← 이전으로</button>
+        <button class="start-button" type="button" id="open-project" aria-label="게임 시작">
+          <img src="./assets/start-button.png" alt="">
+        </button>
+        <a class="nav-button" href="#story-log">다음으로 →</a>
+      </nav>
+
+      <button class="sound-toggle" type="button" id="sound-toggle" aria-pressed="true">♪ BGM ON</button>
+      <audio id="bgm" src="./assets/bgm.mp3" loop preload="auto" autoplay></audio>
+    </main>
+
+    <section class="story-log" id="story-log">
+      <div class="story-window">
+        <div class="quest-title">
+          <span>QUEST BOOK</span>
+          <h2>오합zl존 포트폴리오 구성안</h2>
+          <p>메커톤 선발까지 이어지는 8개의 스테이지</p>
+        </div>
+
+        <div class="quest-map" aria-label="포트폴리오 페이지 구성">
+          <article class="quest-node cleared">
+            <span class="node-number">1</span>
+            <div>
+              <h3>Cover</h3>
+              <p>지존을 향해 모인 다섯 명. 첫 번째 스테이지가 시작됩니다.</p>
+            </div>
+          </article>
+          <article class="quest-node cleared">
+            <span class="node-number">2</span>
+            <div>
+              <h3>Our Story</h3>
+              <p>Microsoft AI School 8기에서 만나 파티가 된 배경을 보여줍니다.</p>
+            </div>
+          </article>
+          <article class="quest-node cleared">
+            <span class="node-number">3</span>
+            <div>
+              <h3>Why Us</h3>
+              <p>도메인 경험, AI 기반 MVP 제작, 수상 경험을 경쟁력으로 정리합니다.</p>
+            </div>
+          </article>
+          <article class="quest-node active">
+            <span class="node-number">4</span>
+            <div>
+              <h3>Team Role</h3>
+              <p>개발, 디자인, 기획이 어떻게 역할을 나누고 완주하는지 보여줍니다.</p>
+            </div>
+          </article>
+          <article class="quest-node">
+            <span class="node-number">5</span>
+            <div>
+              <h3>Our Experience</h3>
+              <p>각 멤버의 대표 프로젝트와 수상 경험을 퀘스트 클리어 기록처럼 배치합니다.</p>
+            </div>
+          </article>
+          <article class="quest-node">
+            <span class="node-number">6</span>
+            <div>
+              <h3>Why Maple</h3>
+              <p>메이플에 대한 애정, 월드 확장성, 창작 욕구를 연결합니다.</p>
+            </div>
+          </article>
+          <article class="quest-node">
+            <span class="node-number">7</span>
+            <div>
+              <h3>We Can Deliver</h3>
+              <p>기획에서 프로토타입, MVP, 발표까지 제한 시간 안에 완주할 실행력을 말합니다.</p>
+            </div>
+          </article>
+          <article class="quest-node boss">
+            <span class="node-number">8</span>
+            <div>
+              <h3>Closing</h3>
+              <p>선발해 주신다면, 엔딩까지 완주하겠습니다.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <dialog class="project-modal" id="project-modal">
+      <form method="dialog">
+        <button class="close-button" aria-label="닫기">×</button>
+      </form>
+      <div class="modal-title">
+        <span id="modal-job">팬텀</span>
+        <h2 id="modal-name">이상은</h2>
+        <p id="modal-role">개발 · 건설 / 프론트엔드</p>
+      </div>
+      <div class="modal-body" id="modal-body"></div>
+    </dialog>
+
+    <dialog class="story-modal" id="story-modal">
+      <form method="dialog">
+        <button class="story-close" aria-label="닫기">×</button>
+      </form>
+      <div class="story-modal-inner">
+        <div class="story-character-frame">
+          <img id="story-character" src="./assets/characters/hyoyeol.png" alt="">
+        </div>
+        <article class="story-detail">
+          <p class="story-kicker">OUR STORY</p>
+          <h2 id="story-name">김효열</h2>
+          <p class="story-role" id="story-role">개발 · 반도체 공정 / AI PoC</p>
+          <p class="story-text" id="story-text"></p>
+          <div class="story-controls">
+            <button type="button" id="story-prev">← 이전</button>
+            <span id="story-count">1 / 5</span>
+            <button type="button" id="story-next">다음 →</button>
+          </div>
+        </article>
+      </div>
+    </dialog>
+
+    <dialog class="why-modal" id="why-modal">
+      <form method="dialog">
+        <button class="story-close" aria-label="닫기">×</button>
+      </form>
+      <div class="why-window">
+        <div class="why-title">
+          <span>PARTY SYNERGY</span>
+          <h2>오합zl존이 강한 이유</h2>
+          <p>각자의 세계에서 쌓아온 경험은, 이제 하나의 파티 시너지로 연결됩니다.</p>
+        </div>
+        <div class="buff-grid">
+          <article class="buff-card">
+            <div class="buff-icon">Ⅰ</div>
+            <h3>다양한 도메인 경험</h3>
+            <p>반도체 공정, 교통신호체계, 건설현장, 항공교통 연구, 패션디자인, 콘텐츠 창작, 데이터 분석을 아우르는 팀 구성.</p>
+          </article>
+          <article class="buff-card">
+            <div class="buff-icon">Ⅱ</div>
+            <h3>AI 기반 빠른 MVP 제작</h3>
+            <p>Codex, Claude Code, Copilot, Gemini 등 AI 도구를 실전에서 활용하고 아이디어에서 배포까지 반복한 경험.</p>
+          </article>
+          <article class="buff-card">
+            <div class="buff-icon">Ⅲ</div>
+            <h3>증명된 협업 역량</h3>
+            <p>MS AI School 프로젝트 수상, UAM 올림피아드 최우수상, 웹툰공모전 수상 경험으로 증명된 완주력.</p>
+          </article>
+        </div>
+        <div class="achievement-log">
+          <h3>획득한 업적</h3>
+          <p>MS AI School 최종 프로젝트 최우수상 · 우수상 · 2차 프로젝트 최우수상 · 2025 UAM 올림피아드 최우수상 · 웹툰공모전 장려상</p>
+        </div>
+        <div class="chapter-actions">
+          <button type="button" id="why-next">WHY MAPLE →</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="chapter-modal maple-modal" id="maple-modal">
+      <form method="dialog">
+        <button class="story-close" aria-label="닫기">×</button>
+      </form>
+      <div class="memory-strip" aria-hidden="true">
+        <img src="./assets/memories/hyoyeol.png" alt="">
+        <img src="./assets/memories/gyeongjun.png" alt="">
+        <img src="./assets/memories/sangeun.jpg" alt="">
+        <img src="./assets/memories/jaegyun.png" alt="">
+        <img src="./assets/memories/yeyoung.png" alt="">
+      </div>
+      <div class="chapter-window">
+        <div class="chapter-title">
+          <span>WORLD SELECT</span>
+          <h2>Why Maple</h2>
+          <p>우리가 이 월드를 선택한 이유</p>
+        </div>
+        <div class="memory-caption" aria-live="polite">
+          <span>- 마을의 BGM과 퀘스트, 낯선 필드를 탐험하던 감각을 기억합니다.</span>
+          <span>- 하우징과 커스터마이징처럼, 직접 세계를 만들어가던 즐거움도 기억합니다.</span>
+          <span>- 메이플 월드는 탐험·수집·성장이라는 보편적인 재미를 품고 있습니다.</span>
+          <span>- 우리는 그 익숙한 재미 위에 AI 기술을 더해 새로운 몰입을 만들고 싶습니다.</span>
+          <span>- 과거의 향수를 살리면서, 플레이어가 자연스럽게 성장하는 경험을 설계하고 싶습니다.</span>
+        </div>
+        <div class="chapter-actions">
+          <button type="button" id="maple-next">READY TO CLEAR →</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="chapter-modal deliver-modal" id="deliver-modal">
+      <form method="dialog">
+        <button class="story-close" aria-label="닫기">×</button>
+      </form>
+      <div class="chapter-window">
+        <div class="chapter-title">
+          <span>READY TO CLEAR</span>
+          <h2>We Can Deliver</h2>
+          <p>아이디어보다 실행 속도로, 플레이 가능한 결과물을 만듭니다.</p>
+        </div>
+        <div class="clear-route">
+          <article><span>1</span><strong>기획</strong><p>콘셉트와 플레이 흐름을 빠르게 정리합니다.</p></article>
+          <article><span>2</span><strong>프로토타입</strong><p>핵심 재미와 사용 경험을 먼저 검증합니다.</p></article>
+          <article><span>3</span><strong>MVP</strong><p>동작하는 결과물을 제한 시간 안에 완성합니다.</p></article>
+          <article><span>4</span><strong>발표</strong><p>완성한 경험을 설득력 있게 전달합니다.</p></article>
+        </div>
+        <p class="deliver-copy">반복된 팀 프로젝트, 개인 사이드 프로젝트 배포, 다수의 수상 경험이 우리의 실행력을 증명합니다.</p>
+        <div class="chapter-actions">
+          <button type="button" id="deliver-next">ENDING →</button>
+        </div>
+      </div>
+    </dialog>
+
+    <dialog class="chapter-modal closing-modal" id="closing-modal">
+      <form method="dialog">
+        <button class="story-close" aria-label="닫기">×</button>
+      </form>
+      <div class="ending-window">
+        <div class="ending-party" aria-hidden="true">
+          <img src="./assets/characters/hyoyeol.png" alt="">
+          <img src="./assets/characters/gyeongjun.png" alt="">
+          <img src="./assets/characters/sangeun.png" alt="">
+          <img src="./assets/characters/jaegyun.png" alt="">
+          <img src="./assets/characters/yeyoung.png" alt="">
+        </div>
+        <div class="ending-dialogue narration-box">
+          <h2>마지막 퀘스트</h2>
+          <p id="ending-typewriter" data-text="선발해 주신다면, 엔딩까지 완주하겠습니다."></p>
+        </div>
+      </div>
+    </dialog>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
