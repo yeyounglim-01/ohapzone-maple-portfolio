@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="preload" href="./assets/fantasy-village-bg.png" as="image" fetchpriority="high">
     <title>오합zl존 | 메커톤 캐릭터 선택</title>
     <meta name="description" content="오합zl존 메커톤 게임형 웹 포트폴리오">
     <link rel="stylesheet" href="./styles.css">
@@ -23,117 +24,119 @@
     </div>
 
     <main class="select-scene" aria-label="오합zl존 캐릭터 선택 화면">
-      <img class="world-bg" src="./assets/fantasy-village-bg.png" alt="">
-      <div class="scene-shade" aria-hidden="true"></div>
+      <div class="scene-stage">
+        <img class="world-bg" src="./assets/fantasy-village-bg.png" alt="" fetchpriority="high" decoding="async">
+        <div class="scene-shade" aria-hidden="true"></div>
 
-      <header class="wood-header">
-        <p>캐릭터 선택</p>
-      </header>
+        <header class="wood-header">
+          <p>캐릭터 선택</p>
+        </header>
 
-      <p class="version">Ver. 1.0.0</p>
+        <p class="version">Ver. 1.0.0</p>
 
-      <section class="stone-logo">
-        <img src="./assets/ohapzone-title.png" alt="오합zl존 OHAPZONE">
-      </section>
+        <section class="stone-logo">
+          <img src="./assets/ohapzone-title.png" alt="오합zl존 OHAPZONE">
+        </section>
 
-      <aside class="portal-label">
-        <span>차원의 거울</span>
-        <strong>만남의 장소</strong>
-      </aside>
+        <aside class="portal-label">
+          <span>차원의 거울</span>
+          <strong>만남의 장소</strong>
+        </aside>
 
-      <aside class="goal-sign">
-        <span>메커톤</span>
-        <strong>→</strong>
-      </aside>
+        <aside class="goal-sign">
+          <span>메커톤</span>
+          <strong>→</strong>
+        </aside>
 
-      <section class="character-row" aria-label="팀원 캐릭터">
-        <button class="character-slot" type="button" data-member="hyoyeol">
-          <span class="character-platform"></span>
-          <img class="character-img" src="./assets/characters/hyoyeol.png" alt="김효열 캐릭터">
-          <span class="fallback-sprite adel" aria-hidden="true"></span>
-          <span class="name-plate"><em>아델</em> 김효열</span>
-          <span class="mini-card">
-            <small>INFO</small>
-            <strong>김효열</strong>
-            <em>개발 · 반도체 공정 / AI PoC</em>
-            mLua 구현, 핵심 플레이 루프 개발, MVP 범위 조정
-            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
-          </span>
-        </button>
+        <section class="character-row" aria-label="팀원 캐릭터">
+          <button class="character-slot" type="button" data-member="hyoyeol">
+            <span class="character-platform"></span>
+            <img class="character-img" src="./assets/characters/hyoyeol.png" alt="김효열 캐릭터">
+            <span class="fallback-sprite adel" aria-hidden="true"></span>
+            <span class="name-plate"><em>아델</em> 김효열</span>
+            <span class="mini-card">
+              <small>INFO</small>
+              <strong>김효열</strong>
+              <em>개발 · 반도체 공정 / AI PoC</em>
+              mLua 구현, 핵심 플레이 루프 개발, MVP 범위 조정
+              <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+            </span>
+          </button>
 
-        <button class="character-slot" type="button" data-member="gyeongjun">
-          <span class="character-platform"></span>
-          <img class="character-img" src="./assets/characters/gyeongjun.png" alt="문경준 캐릭터">
-          <span class="fallback-sprite luminous" aria-hidden="true"></span>
-          <span class="name-plate"><em>루미너스</em> 문경준</span>
-          <span class="mini-card">
-            <small>INFO</small>
-            <strong>문경준</strong>
-            <em>디자인 · 데이터 분석 / 웹앱</em>
-            UI/UX 디자인, 프로토타이핑, AI 서비스 연결
-            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
-          </span>
-        </button>
+          <button class="character-slot" type="button" data-member="gyeongjun">
+            <span class="character-platform"></span>
+            <img class="character-img" src="./assets/characters/gyeongjun.png" alt="문경준 캐릭터">
+            <span class="fallback-sprite luminous" aria-hidden="true"></span>
+            <span class="name-plate"><em>루미너스</em> 문경준</span>
+            <span class="mini-card">
+              <small>INFO</small>
+              <strong>문경준</strong>
+              <em>디자인 · 데이터 분석 / 웹앱</em>
+              UI/UX 디자인, 프로토타이핑, AI 서비스 연결
+              <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+            </span>
+          </button>
 
-        <button class="character-slot active" type="button" data-member="sangeun">
-          <span class="character-platform"></span>
-          <img class="character-img" src="./assets/characters/sangeun.png" alt="이상은 캐릭터">
-          <span class="fallback-sprite phantom" aria-hidden="true"></span>
-          <span class="name-plate"><em>팬텀</em> 이상은</span>
-          <span class="mini-card">
-            <small>INFO</small>
-            <strong>이상은</strong>
-            <em>개발 · 건설 / 프론트엔드</em>
-            UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링
-            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
-          </span>
-        </button>
+          <button class="character-slot active" type="button" data-member="sangeun">
+            <span class="character-platform"></span>
+            <img class="character-img" src="./assets/characters/sangeun.png" alt="이상은 캐릭터">
+            <span class="fallback-sprite phantom" aria-hidden="true"></span>
+            <span class="name-plate"><em>팬텀</em> 이상은</span>
+            <span class="mini-card">
+              <small>INFO</small>
+              <strong>이상은</strong>
+              <em>개발 · 건설 / 프론트엔드</em>
+              UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링
+              <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+            </span>
+          </button>
 
-        <button class="character-slot" type="button" data-member="jaegyun">
-          <span class="character-platform"></span>
-          <img class="character-img" src="./assets/characters/jaegyun.png" alt="이재균 캐릭터">
-          <span class="fallback-sprite mechanic" aria-hidden="true"></span>
-          <span class="name-plate"><em>메카닉</em> 이재균</span>
-          <span class="mini-card">
-            <small>INFO</small>
-            <strong>이재균</strong>
-            <em>기획 · 교통 / UAM 연구</em>
-            게임 콘셉트·플레이 흐름 설계, PM, AI 기능 보조
-            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
-          </span>
-        </button>
+          <button class="character-slot" type="button" data-member="jaegyun">
+            <span class="character-platform"></span>
+            <img class="character-img" src="./assets/characters/jaegyun.png" alt="이재균 캐릭터">
+            <span class="fallback-sprite mechanic" aria-hidden="true"></span>
+            <span class="name-plate"><em>메카닉</em> 이재균</span>
+            <span class="mini-card">
+              <small>INFO</small>
+              <strong>이재균</strong>
+              <em>기획 · 교통 / UAM 연구</em>
+              게임 콘셉트·플레이 흐름 설계, PM, AI 기능 보조
+              <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+            </span>
+          </button>
 
-        <button class="character-slot" type="button" data-member="yeyoung">
-          <span class="character-platform"></span>
-          <img class="character-img" src="./assets/characters/yeyoung.png" alt="임예영 캐릭터">
-          <span class="fallback-sprite pattern" aria-hidden="true"></span>
-          <span class="name-plate"><em>팬텀</em> 임예영</span>
-          <span class="mini-card">
-            <small>INFO</small>
-            <strong>임예영</strong>
-            <em>기획 · 패션 / 콘텐츠 창작</em>
-            세계관·UX 흐름 기획, UI/UX 설계, 비주얼 방향
-            <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
-          </span>
-        </button>
-      </section>
+          <button class="character-slot" type="button" data-member="yeyoung">
+            <span class="character-platform"></span>
+            <img class="character-img" src="./assets/characters/yeyoung.png" alt="임예영 캐릭터">
+            <span class="fallback-sprite pattern" aria-hidden="true"></span>
+            <span class="name-plate"><em>팬텀</em> 임예영</span>
+            <span class="mini-card">
+              <small>INFO</small>
+              <strong>임예영</strong>
+              <em>기획 · 패션 / 콘텐츠 창작</em>
+              세계관·UX 흐름 기획, UI/UX 설계, 비주얼 방향
+              <i><b><span>기여</span></b><b><span>완성</span></b><b><span>협업</span></b></i>
+            </span>
+          </button>
+        </section>
 
-      <section class="selection-panel" aria-live="polite">
-        <div class="job-ribbon" id="selected-job">팬텀</div>
-        <h2 id="selected-name">이상은</h2>
-        <p id="selected-role">개발 · 건설 / 프론트엔드</p>
-        <p id="selected-desc">UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링</p>
-      </section>
+        <section class="selection-panel" aria-live="polite">
+          <div class="job-ribbon" id="selected-job">팬텀</div>
+          <h2 id="selected-name">이상은</h2>
+          <p id="selected-role">개발 · 건설 / 프론트엔드</p>
+          <p id="selected-desc">UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링</p>
+        </section>
 
-      <nav class="game-nav" aria-label="게임형 포트폴리오 조작">
-        <button class="nav-button muted" type="button">← 이전으로</button>
-        <button class="start-button" type="button" id="open-project" aria-label="게임 시작">
-          <img src="./assets/start-button.png" alt="">
-        </button>
-        <a class="nav-button" href="#story-log">다음으로 →</a>
-      </nav>
+        <nav class="game-nav" aria-label="게임형 포트폴리오 조작">
+          <button class="nav-button muted" type="button">← 이전으로</button>
+          <button class="start-button" type="button" id="open-project" aria-label="게임 시작">
+            <img src="./assets/start-button.png" alt="">
+          </button>
+          <a class="nav-button" href="#story-log">다음으로 →</a>
+        </nav>
 
-      <button class="sound-toggle" type="button" id="sound-toggle" aria-pressed="true">♪ BGM ON</button>
+        <button class="sound-toggle" type="button" id="sound-toggle" aria-pressed="true">♪ BGM ON</button>
+      </div>
       <audio id="bgm" src="./assets/bgm.mp3" loop preload="auto" autoplay></audio>
     </main>
 
