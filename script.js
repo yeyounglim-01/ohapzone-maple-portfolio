@@ -85,7 +85,7 @@ const selectSfx = new Audio("./assets/select.mp3");
 const cursorSfx = new Audio("./assets/cursor-click.mp3");
 let selectedKey = "sangeun";
 let storyIndex = 0;
-const mobileCharacterQuery = window.matchMedia("(max-width: 760px)");
+const mobileCharacterQuery = window.matchMedia("(max-width: 760px), (max-width: 900px) and (orientation: portrait)");
 
 function playSfx(source, volume = 0.72) {
   const sound = source.cloneNode();

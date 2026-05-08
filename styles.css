@@ -493,6 +493,7 @@ body.intro-started .intro-narration {
 .character-slot:hover,
 .character-slot:focus-visible,
 .character-slot.active:hover {
+  z-index: 20;
   opacity: 1;
   filter:
     brightness(1.12)
@@ -710,8 +711,8 @@ body.intro-started .intro-narration {
 .mini-card {
   position: absolute;
   left: 50%;
-  bottom: 82%;
-  z-index: 10;
+  bottom: 190%;
+  z-index: 30;
   width: 292px;
   padding: 22px 22px 18px;
   color: #3e2b17;
@@ -913,6 +914,53 @@ body.intro-started .intro-narration {
   margin: 4px 0 8px;
   color: #6a4a28;
   font-weight: 1000;
+}
+
+.selection-stats {
+  display: none;
+}
+
+.selection-stat {
+  --stat-width: 68%;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: center;
+  gap: 8px;
+}
+
+.selection-stat span {
+  color: #6a4725;
+  font-size: 11px;
+  font-weight: 1000;
+  line-height: 1;
+}
+
+.selection-stat b {
+  position: relative;
+  height: 8px;
+  background: linear-gradient(90deg, rgba(108, 83, 44, 0.2), rgba(108, 83, 44, 0.08));
+  border: 1px solid rgba(108, 83, 44, 0.22);
+  border-radius: 999px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
+}
+
+.selection-stat b::after {
+  content: "";
+  position: absolute;
+  left: 1px;
+  top: 1px;
+  height: 4px;
+  width: var(--stat-width);
+  background: linear-gradient(90deg, #7aa950, #d8ba57);
+  border-radius: 999px;
+}
+
+.selection-stat.completion {
+  --stat-width: 78%;
+}
+
+.selection-stat.teamwork {
+  --stat-width: 58%;
 }
 
 .game-nav {
@@ -1964,7 +2012,64 @@ body.intro-started .intro-narration {
   }
 }
 
-@media (max-width: 760px) {
+@media (min-width: 901px), (min-width: 761px) and (orientation: landscape) {
+  .deliver-modal {
+    background:
+      linear-gradient(180deg, #5e3b22 0 154px, #fff0cc 154px),
+      #fff0cc;
+  }
+
+  .deliver-modal .chapter-title {
+    min-height: 126px;
+  }
+
+  .deliver-modal .chapter-title p {
+    max-width: 760px;
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+}
+
+@media (min-width: 761px) and (max-height: 760px) {
+  .mini-card {
+    width: 260px;
+    padding: 13px 16px 12px;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  .mini-card::before {
+    inset: 6px;
+  }
+
+  .mini-card::after {
+    top: 10px;
+    right: 12px;
+    width: 46px;
+    height: 22px;
+  }
+
+  .mini-card small {
+    top: 15px;
+    right: 21px;
+    font-size: 10px;
+  }
+
+  .mini-card strong {
+    margin-top: 6px;
+    font-size: 20px;
+  }
+
+  .mini-card em {
+    margin: 4px 0 6px;
+  }
+
+  .mini-card i {
+    display: none;
+  }
+}
+
+@media (max-width: 760px), (max-width: 900px) and (orientation: portrait) {
   .select-scene {
     --world-width: 100vw;
     --world-height: 100svh;
@@ -2084,10 +2189,10 @@ body.intro-started .intro-narration {
     left: 0;
     right: auto;
     top: auto;
-    bottom: 22svh;
+    bottom: 18svh;
     width: 100vw;
-    height: 35svh;
-    grid-template-columns: repeat(5, minmax(186px, 52vw));
+    height: 37svh;
+    grid-template-columns: repeat(5, minmax(186px, min(52vw, 280px)));
     align-items: end;
     gap: clamp(10px, 3vw, 16px);
     overflow-x: auto;
@@ -2096,7 +2201,7 @@ body.intro-started .intro-narration {
     scroll-padding-inline: 24vw;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
-    padding: 0 24vw 6svh;
+    padding: 0 24vw 4svh;
     pointer-events: auto;
     transform: none;
     -webkit-overflow-scrolling: touch;
@@ -2118,7 +2223,7 @@ body.intro-started .intro-narration {
   }
 
   .character-slot::after {
-    bottom: 36%;
+    bottom: 28%;
     width: 82%;
     height: 8.8%;
   }
@@ -2135,7 +2240,7 @@ body.intro-started .intro-narration {
 
   .character-img,
   .fallback-sprite {
-    bottom: 42%;
+    bottom: 30%;
   }
 
   .character-platform {
@@ -2151,34 +2256,28 @@ body.intro-started .intro-narration {
   }
 
   .mini-card {
-    left: 50%;
-    right: auto;
-    bottom: 160px;
-    width: min(278px, 88vw);
-    padding: 18px 18px 15px;
-    transform: translateX(-50%) translateY(12px) scale(0.96);
-  }
-
-  .character-slot:hover .mini-card,
-  .character-slot:focus-visible .mini-card {
-    transform: translateX(-50%) translateY(0) scale(1);
+    display: none;
   }
 
   .selection-panel {
     display: block;
-    bottom: 94px;
+    top: 82px;
+    bottom: auto;
+    z-index: 8;
     width: calc(100vw - 28px);
-    min-height: 80px;
-    padding: 12px 14px 10px;
+    max-width: 420px;
+    min-height: 0;
+    padding: 10px 14px 11px;
     border-width: 4px;
+    transform: translateX(-50%);
   }
 
   .job-ribbon {
     width: 150px;
-    margin-top: -34px;
+    margin: 0 auto 6px;
     padding: 6px 10px;
     border-width: 3px;
-    font-size: 16px;
+    font-size: 15px;
   }
 
   .selection-panel h2 {
@@ -2186,11 +2285,26 @@ body.intro-started .intro-narration {
   }
 
   .selection-panel p {
-    font-size: 13px;
+    font-size: 12.5px;
+    line-height: 1.35;
   }
 
   #selected-role {
-    margin: 0 0 4px;
+    margin: 0 0 3px;
+  }
+
+  .selection-stats {
+    width: min(270px, 100%);
+    display: grid;
+    gap: 6px;
+    margin: 8px auto 0;
+    padding: 7px 10px;
+    background:
+      linear-gradient(180deg, rgba(255, 255, 255, 0.52), rgba(238, 212, 139, 0.35)),
+      rgba(255, 247, 224, 0.58);
+    border: 2px solid rgba(112, 86, 46, 0.35);
+    border-radius: 6px;
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
   }
 
   .game-nav {
@@ -2243,5 +2357,14 @@ body.intro-started .intro-narration {
     width: 96%;
     margin-top: -72px;
     padding: 14px 16px 16px;
+  }
+}
+
+@media (min-width: 700px) and (max-width: 900px) and (orientation: portrait) {
+  .character-row {
+    grid-template-columns: repeat(5, minmax(300px, 38vw));
+    gap: clamp(34px, 5vw, 48px);
+    padding-inline: 30vw;
+    scroll-padding-inline: 30vw;
   }
 }
