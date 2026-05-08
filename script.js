@@ -84,6 +84,12 @@ const selectSfx = new Audio("./assets/select.mp3");
 const cursorSfx = new Audio("./assets/cursor-click.mp3");
 let selectedKey = "sangeun";
 let storyIndex = 0;
+let introStarted = false;
+let introComplete = false;
+
+function canUseSelectScene() {
+  return introComplete;
+}
 
 function playSfx(source, volume = 0.72) {
   const sound = source.cloneNode();
@@ -143,6 +149,7 @@ function renderStory(index) {
 }
 
 function openStorySequence() {
+  if (!canUseSelectScene()) return;
   playSfx(selectSfx);
   renderStory(0);
   storyModal.showModal();
@@ -160,6 +167,7 @@ slots.forEach((slot) => {
   slot.addEventListener("mouseenter", () => selectMember(key));
   slot.addEventListener("focus", () => selectMember(key));
   slot.addEventListener("click", () => {
+    if (!canUseSelectScene()) return;
     playSfx(selectSfx);
     selectMember(key);
     openProjects(key);
@@ -251,15 +259,24 @@ soundToggle.addEventListener("click", async () => {
 });
 
 introStart.addEventListener("click", () => {
+  if (introStarted) return;
+  introStarted = true;
   document.body.classList.add("intro-started");
   playSfx(introLogoSfx, 0.78);
   bgmWanted = true;
   tryPlayBgm();
 });
 
+document.querySelector(".intro-flash").addEventListener("animationend", (event) => {
+  if (event.animationName !== "introVanish") return;
+  introComplete = true;
+  document.body.classList.add("intro-complete");
+});
+
 document.addEventListener("click", (event) => {
   const target = event.target.closest("button, a, .character-slot");
   if (!target) return;
+  if (!canUseSelectScene() && target.id !== "intro-start") return;
   if (target.id === "intro-start") return;
   if (target.id === "open-project" || target.classList.contains("character-slot")) return;
   if (target.id === "story-prev" || target.id === "story-next" || target.id === "sound-toggle") return;

@@ -100,11 +100,16 @@ body.intro-started .intro-flash img {
 }
 
 body.intro-started .intro-flash {
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 body.intro-started .intro-start {
   display: none;
+}
+
+body.intro-complete .intro-flash {
+  pointer-events: none;
+  visibility: hidden;
 }
 
 @keyframes startPulse {
