@@ -91,6 +91,25 @@ function canUseSelectScene() {
   return introComplete;
 }
 
+function refreshCharacterLayer() {
+  const row = document.querySelector(".character-row");
+  if (!row) return;
+
+  row.classList.add("force-layer-refresh");
+
+  row.getBoundingClientRect();
+  slots.forEach((slot) => {
+    const visual = slot.querySelector(".character-img, .fallback-sprite");
+    if (visual) visual.getBoundingClientRect();
+  });
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      row.classList.remove("force-layer-refresh");
+    });
+  });
+}
+
 function playSfx(source, volume = 0.72) {
   const sound = source.cloneNode();
   sound.volume = volume;
@@ -271,6 +290,7 @@ document.querySelector(".intro-flash").addEventListener("animationend", (event) 
   if (event.animationName !== "introVanish") return;
   introComplete = true;
   document.body.classList.add("intro-complete");
+  refreshCharacterLayer();
 });
 
 document.addEventListener("click", (event) => {

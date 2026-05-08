@@ -443,6 +443,11 @@ body.intro-started .intro-narration {
   gap: clamp(18px, 2.4vw, 42px);
 }
 
+.character-row.force-layer-refresh {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
 .character-slot {
   position: relative;
   min-width: 0;
@@ -513,6 +518,16 @@ body.intro-started .intro-narration {
   transform: translateX(calc(-50% + var(--char-x))) translateY(var(--char-y)) scale(var(--char-scale));
   animation: floaty var(--float-duration) ease-in-out infinite;
   animation-delay: var(--float-delay);
+}
+
+body:not(.intro-complete) .character-img,
+body:not(.intro-complete) .fallback-sprite {
+  animation-play-state: paused;
+}
+
+.character-row.force-layer-refresh .character-img,
+.character-row.force-layer-refresh .fallback-sprite {
+  animation: none;
 }
 
 .character-img {
