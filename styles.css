@@ -1746,14 +1746,11 @@ body:not(.intro-complete) .fallback-sprite {
     opacity: 0;
     transform: scale(1.06) translateY(10px);
   }
-  8%, 17% {
+  5%, 15% {
     opacity: 0.9;
+    transform: scale(1.08) translateY(0);
   }
-  24% {
-    opacity: 0;
-    transform: scale(1.12) translateY(-8px);
-  }
-  100% {
+  19%, 100% {
     opacity: 0;
     transform: scale(1.12) translateY(-8px);
   }
@@ -1794,25 +1791,25 @@ body:not(.intro-complete) .fallback-sprite {
   grid-area: 1 / 1;
   opacity: 0;
   transform: translateY(8px);
-  animation: captionRoll 7.5s linear infinite;
+  animation: captionRoll 15s linear infinite;
 }
 
 .memory-caption span:nth-child(1) { animation-delay: 0s; }
-.memory-caption span:nth-child(2) { animation-delay: 1.5s; }
-.memory-caption span:nth-child(3) { animation-delay: 3s; }
-.memory-caption span:nth-child(4) { animation-delay: 4.5s; }
-.memory-caption span:nth-child(5) { animation-delay: 6s; }
+.memory-caption span:nth-child(2) { animation-delay: 3s; }
+.memory-caption span:nth-child(3) { animation-delay: 6s; }
+.memory-caption span:nth-child(4) { animation-delay: 9s; }
+.memory-caption span:nth-child(5) { animation-delay: 12s; }
 
 @keyframes captionRoll {
-  0%, 16% {
+  0%, 5% {
     opacity: 0;
     transform: translateY(8px);
   }
-  20%, 34% {
+  8%, 15% {
     opacity: 1;
     transform: translateY(0);
   }
-  38%, 100% {
+  19%, 100% {
     opacity: 0;
     transform: translateY(-6px);
   }
