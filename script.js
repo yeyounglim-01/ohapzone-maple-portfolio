@@ -61,6 +61,7 @@ const modal = document.querySelector("#project-modal");
 const modalName = document.querySelector("#modal-name");
 const modalJob = document.querySelector("#modal-job");
 const modalRole = document.querySelector("#modal-role");
+const modalPartImage = document.querySelector("#modal-part-image");
 const modalBody = document.querySelector("#modal-body");
 const storyModal = document.querySelector("#story-modal");
 const storyCharacter = document.querySelector("#story-character");
@@ -145,6 +146,9 @@ function openProjects(key) {
   modalName.textContent = member.name;
   modalJob.textContent = member.job;
   modalRole.textContent = member.role;
+  modalPartImage.src = `./assets/characters/${key}3.png`;
+  modalPartImage.alt = `${member.name} 담당 파트 이미지`;
+  modalPartImage.dataset.member = key;
   modalBody.innerHTML = member.projects
     .map(([title, body]) => `<article><h3>${title}</h3><p>${body}</p></article>`)
     .join("");
@@ -156,7 +160,7 @@ function renderStory(index) {
   const key = storyOrder[storyIndex];
   const member = members[key];
   storyCharacter.classList.remove("slide-in");
-  storyCharacter.src = `./assets/characters/${key}.png`;
+  storyCharacter.src = `./assets/characters/${key}3.png`;
   storyCharacter.alt = `${member.name} 캐릭터`;
   storyName.textContent = member.name;
   storyRole.textContent = member.role;
