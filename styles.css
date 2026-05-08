@@ -126,12 +126,12 @@ body.intro-complete .intro-flash {
 .intro-narration {
   position: fixed;
   left: 50%;
-  bottom: 44px;
+  top: clamp(28px, 6vh, 64px);
   z-index: 99;
   width: min(840px, calc(100vw - 36px));
   pointer-events: none;
   opacity: 0;
-  transform: translateX(-50%) translateY(14px);
+  transform: translateX(-50%) translateY(-14px);
   animation: narrationSequence 4.9s ease-out 2.35s forwards;
   animation-play-state: paused;
 }
@@ -200,7 +200,7 @@ body.intro-started .intro-narration {
 @keyframes narrationSequence {
   0% {
     opacity: 0;
-    transform: translateX(-50%) translateY(14px);
+    transform: translateX(-50%) translateY(-14px);
   }
   12% {
     opacity: 1;
@@ -212,7 +212,7 @@ body.intro-started .intro-narration {
   }
   100% {
     opacity: 0;
-    transform: translateX(-50%) translateY(-8px);
+    transform: translateX(-50%) translateY(-10px);
     visibility: hidden;
   }
 }
@@ -1983,7 +1983,7 @@ body:not(.intro-complete) .fallback-sprite {
   }
 
   .intro-narration {
-    bottom: 24px;
+    top: 18px;
     width: calc(100vw - 22px);
   }
 
