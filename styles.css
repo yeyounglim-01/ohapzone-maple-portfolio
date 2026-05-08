@@ -65,8 +65,8 @@ a {
 .intro-flash img {
   width: min(680px, 78vw);
   height: auto;
-  opacity: 0;
-  transform: translateY(12px) scale(0.92);
+  opacity: 1;
+  transform: translateY(0) scale(1);
   filter: drop-shadow(0 12px 0 rgba(0, 0, 0, 0.22)) drop-shadow(0 24px 30px rgba(0, 0, 0, 0.26));
   animation: titleAppear 2.2s ease-out forwards;
   animation-play-state: paused;
@@ -224,8 +224,8 @@ body.intro-started .intro-narration {
 
 @keyframes titleAppear {
   0% {
-    opacity: 0;
-    transform: translateY(14px) scale(0.9);
+    opacity: 1;
+    transform: translateY(0) scale(1);
   }
   24% {
     opacity: 1;
