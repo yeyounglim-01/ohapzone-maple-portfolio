@@ -126,7 +126,7 @@ body.intro-complete .intro-flash {
 .intro-narration {
   position: fixed;
   left: 50%;
-  top: clamp(28px, 6vh, 64px);
+  top: clamp(76px, 11vh, 112px);
   z-index: 99;
   width: min(840px, calc(100vw - 36px));
   pointer-events: none;
@@ -1983,7 +1983,7 @@ body:not(.intro-complete) .fallback-sprite {
   }
 
   .intro-narration {
-    top: 18px;
+    top: 78px;
     width: calc(100vw - 22px);
   }
 
