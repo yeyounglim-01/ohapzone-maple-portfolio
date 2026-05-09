@@ -62,6 +62,7 @@ const modal = document.querySelector("#project-modal");
 const modalName = document.querySelector("#modal-name");
 const modalJob = document.querySelector("#modal-job");
 const modalRole = document.querySelector("#modal-role");
+const modalPartImage = document.querySelector("#modal-part-image");
 const modalBody = document.querySelector("#modal-body");
 const storyModal = document.querySelector("#story-modal");
 const storyCharacter = document.querySelector("#story-character");
@@ -86,6 +87,31 @@ const cursorSfx = new Audio("./assets/cursor-click.mp3");
 let selectedKey = "sangeun";
 let storyIndex = 0;
 const mobileCharacterQuery = window.matchMedia("(max-width: 760px), (max-width: 900px) and (orientation: portrait)");
+let introStarted = false;
+let introComplete = false;
+
+function canUseSelectScene() {
+  return introComplete;
+}
+
+function refreshCharacterLayer() {
+  const row = document.querySelector(".character-row");
+  if (!row) return;
+
+  row.classList.add("force-layer-refresh");
+
+  row.getBoundingClientRect();
+  slots.forEach((slot) => {
+    const visual = slot.querySelector(".character-img, .fallback-sprite");
+    if (visual) visual.getBoundingClientRect();
+  });
+
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      row.classList.remove("force-layer-refresh");
+    });
+  });
+}
 
 function playSfx(source, volume = 0.72) {
   const sound = source.cloneNode();
@@ -128,6 +154,9 @@ function openProjects(key) {
   modalName.textContent = member.name;
   modalJob.textContent = member.job;
   modalRole.textContent = member.role;
+  modalPartImage.src = `./assets/characters/${key}3.png`;
+  modalPartImage.alt = `${member.name} 담당 파트 이미지`;
+  modalPartImage.dataset.member = key;
   modalBody.innerHTML = member.projects
     .map(([title, body]) => `<article><h3>${title}</h3><p>${body}</p></article>`)
     .join("");
@@ -139,7 +168,7 @@ function renderStory(index) {
   const key = storyOrder[storyIndex];
   const member = members[key];
   storyCharacter.classList.remove("slide-in");
-  storyCharacter.src = `./assets/characters/${key}.png`;
+  storyCharacter.src = `./assets/characters/${key}3.png`;
   storyCharacter.alt = `${member.name} 캐릭터`;
   storyName.textContent = member.name;
   storyRole.textContent = member.role;
@@ -151,6 +180,7 @@ function renderStory(index) {
 }
 
 function openStorySequence() {
+  if (!canUseSelectScene()) return;
   playSfx(selectSfx);
   renderStory(0);
   storyModal.showModal();
@@ -174,6 +204,7 @@ slots.forEach((slot) => {
   slot.addEventListener("mouseenter", () => selectMember(key));
   slot.addEventListener("focus", () => selectMember(key));
   slot.addEventListener("click", () => {
+    if (!canUseSelectScene()) return;
     playSfx(selectSfx);
     selectMember(key);
     openProjects(key);
@@ -265,6 +296,8 @@ soundToggle.addEventListener("click", async () => {
 });
 
 introStart.addEventListener("click", () => {
+  if (introStarted) return;
+  introStarted = true;
   document.body.classList.add("intro-started");
   centerActiveCharacter();
   playSfx(introLogoSfx, 0.78);
@@ -274,10 +307,18 @@ introStart.addEventListener("click", () => {
 
 window.addEventListener("load", centerActiveCharacter);
 mobileCharacterQuery.addEventListener("change", centerActiveCharacter);
+document.querySelector(".intro-flash").addEventListener("animationend", (event) => {
+  if (event.animationName !== "introVanish") return;
+  introComplete = true;
+  document.body.classList.add("intro-complete");
+  refreshCharacterLayer();
+  centerActiveCharacter();
+});
 
 document.addEventListener("click", (event) => {
   const target = event.target.closest("button, a, .character-slot");
   if (!target) return;
+  if (!canUseSelectScene() && target.id !== "intro-start") return;
   if (target.id === "intro-start") return;
   if (target.id === "open-project" || target.classList.contains("character-slot")) return;
   if (target.id === "story-prev" || target.id === "story-next" || target.id === "sound-toggle") return;
