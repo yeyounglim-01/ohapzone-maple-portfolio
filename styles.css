@@ -1414,6 +1414,7 @@ body:not(.intro-complete) .fallback-sprite {
 
 .story-modal {
   width: min(980px, calc(100vw - 32px));
+  max-height: calc(100svh - 32px);
   padding: 0;
   color: #2f1c0f;
   background:
@@ -1455,6 +1456,11 @@ body:not(.intro-complete) .fallback-sprite {
   display: grid;
   grid-template-columns: 42% 58%;
   min-height: 500px;
+  max-height: calc(100svh - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .story-character-frame {
