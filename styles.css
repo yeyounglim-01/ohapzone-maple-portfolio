@@ -731,7 +731,7 @@ body:not(.intro-complete) .fallback-sprite {
 .mini-card {
   position: absolute;
   left: 50%;
-  bottom: 190%;
+  bottom: 154%;
   z-index: 30;
   width: 292px;
   padding: 22px 22px 18px;

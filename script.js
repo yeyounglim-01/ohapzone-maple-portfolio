@@ -120,6 +120,11 @@ function playSfx(source, volume = 0.72) {
 }
 
 const storyOrder = ["hyoyeol", "gyeongjun", "sangeun", "jaegyun", "yeyoung"];
+const roleImageCache = storyOrder.map((key) => {
+  const image = new Image();
+  image.src = `./assets/characters/${key}3.png`;
+  return image;
+});
 const storyCopy = {
   hyoyeol:
     "반도체 제조 현장에서 공정·데이터 기반 문제 해결을 경험한 후 MS AI School을 통해 AI 기반 PoC와 MVP 제작을 거쳤습니다. 게임을 규칙·선택·보상·피드백이 연결된 체계적인 시스템으로 바라보는 시각을 가지고 있습니다.",
