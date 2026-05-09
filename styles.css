@@ -513,6 +513,15 @@ body.intro-started .intro-narration {
   transform: translateY(-4px);
 }
 
+.character-row:has(.character-slot:hover) .character-slot:not(:hover),
+.character-row:has(.character-slot:focus-visible) .character-slot:not(:focus-visible) {
+  opacity: 0.46;
+  filter:
+    brightness(0.58)
+    saturate(0.72)
+    drop-shadow(0 10px 10px rgba(0, 0, 0, 0.42));
+}
+
 .character-slot:focus-visible .name-plate,
 .character-slot.active .name-plate {
   filter: brightness(1.12) drop-shadow(0 0 8px rgba(255, 220, 92, 0.76));
@@ -2305,6 +2314,12 @@ body:not(.intro-complete) .fallback-sprite {
   }
 
   .character-row:hover .character-slot {
+    opacity: 1;
+    filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.42));
+  }
+
+  .character-row:has(.character-slot:hover) .character-slot:not(:hover),
+  .character-row:has(.character-slot:focus-visible) .character-slot:not(:focus-visible) {
     opacity: 1;
     filter: drop-shadow(0 10px 10px rgba(0, 0, 0, 0.42));
   }
