@@ -721,7 +721,7 @@ body:not(.intro-complete) .fallback-sprite {
   --char-x: -50px;
   --char-y: 13px;
   --char-scale: 0.94;
-  --plate-x: 0px;
+  --plate-x: -32px;
   --plate-y: 0px;
   --float-distance: 5px;
   --float-duration: 3.9s;
