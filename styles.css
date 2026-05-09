@@ -2213,3 +2213,42 @@ body.intro-started .intro-narration {
     padding: 14px 16px 16px;
   }
 }
+
+/* We Can Deliver 팝업 상단 겹침 수정 */
+.deliver-modal {
+  background:
+    linear-gradient(180deg, #5e3b22 0 156px, #fff0cc 156px),
+    #fff0cc;
+}
+
+.deliver-modal .chapter-window {
+  padding-top: 22px;
+}
+
+.deliver-modal .chapter-title {
+  min-height: 128px;
+  padding-right: 58px;
+}
+
+.deliver-modal .chapter-title span {
+  margin-bottom: 4px;
+}
+
+.deliver-modal .chapter-title h2 {
+  margin: 4px 0 4px;
+  line-height: 1;
+}
+
+.deliver-modal .chapter-title p {
+  margin: 0;
+  line-height: 1.25;
+}
+
+.deliver-modal .clear-route {
+  margin-top: 10px;
+}
+
+
+
+
+
