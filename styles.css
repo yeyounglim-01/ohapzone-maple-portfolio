@@ -1730,6 +1730,7 @@ body:not(.intro-complete) .fallback-sprite {
 
 .chapter-modal {
   width: min(980px, calc(100vw - 32px));
+  max-height: calc(100svh - 32px);
   padding: 0;
   color: #2f1c0f;
   background:
@@ -1759,6 +1760,9 @@ body:not(.intro-complete) .fallback-sprite {
 .chapter-window {
   position: relative;
   z-index: 1;
+  max-height: calc(100svh - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
   padding: 28px 30px 30px;
 }
 
