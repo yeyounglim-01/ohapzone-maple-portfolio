@@ -2069,18 +2069,36 @@ body:not(.intro-complete) .fallback-sprite {
 @media (min-width: 901px), (min-width: 761px) and (orientation: landscape) {
   .deliver-modal {
     background:
-      linear-gradient(180deg, #5e3b22 0 154px, #fff0cc 154px),
+      linear-gradient(180deg, #5e3b22 0 156px, #fff0cc 156px),
       #fff0cc;
   }
 
+  .deliver-modal .chapter-window {
+    padding-top: 22px;
+  }
+
   .deliver-modal .chapter-title {
-    min-height: 126px;
+    min-height: 128px;
+    padding-right: 58px;
+  }
+
+  .deliver-modal .chapter-title span {
+    margin-bottom: 4px;
+  }
+
+  .deliver-modal .chapter-title h2 {
+    margin: 4px 0 4px;
+    line-height: 1;
   }
 
   .deliver-modal .chapter-title p {
     max-width: 760px;
-    margin-top: 5px;
-    line-height: 1.4;
+    margin: 0;
+    line-height: 1.25;
+  }
+
+  .deliver-modal .clear-route {
+    margin-top: 10px;
   }
 }
 
