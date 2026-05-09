@@ -26,7 +26,7 @@ const members = {
     desc: "UI/UX 구현, 사용자 경험 최적화, 시스템 안정성, 리팩토링",
     projects: [
       ["Deep Nexus", "사내 데이터 인텔리전스 플랫폼. Electron 프론트엔드 설계와 멀티모달 UX 구현으로 업무 데이터 처리 속도 향상."],
-      ["EasyStock", "Azure 기반 주식 투자 교육 서비스. UI/UX 설계와 레벨·성장 피드백 화면 구현."]
+      ["EasyStock", "Azure 기반 주식 투자 교육 서비스. UI/UX 설계 및 리팩토링, 퀘스트·레벨·성장 피드백 화면 구현. MS AI School 최종 프로젝트 장려상."]
     ]
   },
   jaegyun: {
@@ -88,7 +88,7 @@ let storyIndex = 0;
 function playSfx(source, volume = 0.72) {
   const sound = source.cloneNode();
   sound.volume = volume;
-  sound.play().catch(() => {});
+  sound.play().catch(() => { });
 }
 
 const storyOrder = ["hyoyeol", "gyeongjun", "sangeun", "jaegyun", "yeyoung"];
