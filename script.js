@@ -53,6 +53,7 @@ const members = {
 };
 
 const slots = [...document.querySelectorAll(".character-slot")];
+const characterRow = document.querySelector(".character-row");
 const selectedName = document.querySelector("#selected-name");
 const selectedJob = document.querySelector("#selected-job");
 const selectedRole = document.querySelector("#selected-role");
@@ -84,6 +85,7 @@ const selectSfx = new Audio("./assets/select.mp3");
 const cursorSfx = new Audio("./assets/cursor-click.mp3");
 let selectedKey = "sangeun";
 let storyIndex = 0;
+const mobileCharacterQuery = window.matchMedia("(max-width: 760px), (max-width: 900px) and (orientation: portrait)");
 
 function playSfx(source, volume = 0.72) {
   const sound = source.cloneNode();
@@ -113,6 +115,12 @@ function selectMember(key) {
   selectedJob.textContent = member.job;
   selectedRole.textContent = member.role;
   selectedDesc.textContent = member.desc;
+}
+
+function centerActiveCharacter() {
+  if (!mobileCharacterQuery.matches || !characterRow) return;
+  const activeSlot = characterRow.querySelector(".character-slot.active");
+  activeSlot?.scrollIntoView({ behavior: "auto", block: "nearest", inline: "center" });
 }
 
 function openProjects(key) {
@@ -151,8 +159,14 @@ function openStorySequence() {
 slots.forEach((slot) => {
   const key = slot.dataset.member;
   const img = slot.querySelector(".character-img");
-  img.addEventListener("error", () => slot.classList.add("missing-image"));
-  img.addEventListener("load", () => slot.classList.add("has-image"));
+  img.addEventListener("error", () => {
+    slot.classList.remove("has-image");
+    slot.classList.add("missing-image");
+  });
+  img.addEventListener("load", () => {
+    slot.classList.remove("missing-image");
+    slot.classList.add("has-image");
+  });
   if (img.complete) {
     slot.classList.toggle("has-image", img.naturalWidth > 0);
     slot.classList.toggle("missing-image", img.naturalWidth === 0);
@@ -252,10 +266,14 @@ soundToggle.addEventListener("click", async () => {
 
 introStart.addEventListener("click", () => {
   document.body.classList.add("intro-started");
+  centerActiveCharacter();
   playSfx(introLogoSfx, 0.78);
   bgmWanted = true;
   tryPlayBgm();
 });
+
+window.addEventListener("load", centerActiveCharacter);
+mobileCharacterQuery.addEventListener("change", centerActiveCharacter);
 
 document.addEventListener("click", (event) => {
   const target = event.target.closest("button, a, .character-slot");
