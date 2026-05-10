@@ -65,6 +65,7 @@ const modalRole = document.querySelector("#modal-role");
 const modalPartImage = document.querySelector("#modal-part-image");
 const modalBody = document.querySelector("#modal-body");
 const storyModal = document.querySelector("#story-modal");
+const storyCharacterFrame = document.querySelector(".story-character-frame");
 const storyCharacter = document.querySelector("#story-character");
 const storyName = document.querySelector("#story-name");
 const storyRole = document.querySelector("#story-role");
@@ -81,14 +82,15 @@ const mapleNext = document.querySelector("#maple-next");
 const deliverNext = document.querySelector("#deliver-next");
 const endingTypewriter = document.querySelector("#ending-typewriter");
 const introStart = document.querySelector("#intro-start");
-const introLogoSfx = new Audio("./assets/intro-logo.mp3");
-const selectSfx = new Audio("./assets/select.mp3");
-const cursorSfx = new Audio("./assets/cursor-click.mp3");
+const introLogoSfx = "./assets/intro-logo.mp3";
+const selectSfx = "./assets/select.mp3";
+const cursorSfx = "./assets/cursor-click.mp3";
 let selectedKey = "sangeun";
 let storyIndex = 0;
 const mobileCharacterQuery = window.matchMedia("(max-width: 760px), (max-width: 900px) and (orientation: portrait)");
 let introStarted = false;
 let introComplete = false;
+const primedRoleImages = new Set();
 
 function canUseSelectScene() {
   return introComplete;
@@ -114,17 +116,37 @@ function refreshCharacterLayer() {
 }
 
 function playSfx(source, volume = 0.72) {
-  const sound = source.cloneNode();
+  const sound = new Audio(source);
+  sound.preload = "auto";
   sound.volume = volume;
   sound.play().catch(() => {});
 }
 
 const storyOrder = ["hyoyeol", "gyeongjun", "sangeun", "jaegyun", "yeyoung"];
-const roleImageCache = storyOrder.map((key) => {
+
+function getRoleImageSrc(key) {
+  return `./assets/characters/${key}3.webp`;
+}
+
+function primeRoleImage(key) {
+  if (primedRoleImages.has(key)) return;
+  primedRoleImages.add(key);
   const image = new Image();
-  image.src = `./assets/characters/${key}3.png`;
-  return image;
-});
+  image.src = getRoleImageSrc(key);
+}
+
+function primeNearbyStoryImages(index) {
+  const nextKey = storyOrder[(index + 1) % storyOrder.length];
+  primeRoleImage(nextKey);
+}
+
+function loadDeferredImages(root) {
+  root.querySelectorAll("img[data-src]").forEach((image) => {
+    image.src = image.dataset.src;
+    image.removeAttribute("data-src");
+  });
+}
+
 const storyCopy = {
   hyoyeol:
     "반도체 제조 현장에서 공정·데이터 기반 문제 해결을 경험한 후 MS AI School을 통해 AI 기반 PoC와 MVP 제작을 거쳤습니다. 게임을 규칙·선택·보상·피드백이 연결된 체계적인 시스템으로 바라보는 시각을 가지고 있습니다.",
@@ -159,7 +181,7 @@ function openProjects(key) {
   modalName.textContent = member.name;
   modalJob.textContent = member.job;
   modalRole.textContent = member.role;
-  modalPartImage.src = `./assets/characters/${key}3.png`;
+  modalPartImage.src = getRoleImageSrc(key);
   modalPartImage.alt = `${member.name} 담당 파트 이미지`;
   modalPartImage.dataset.member = key;
   modalBody.innerHTML = member.projects
@@ -172,16 +194,26 @@ function renderStory(index) {
   storyIndex = (index + storyOrder.length) % storyOrder.length;
   const key = storyOrder[storyIndex];
   const member = members[key];
+  const roleImageSrc = getRoleImageSrc(key);
   storyCharacter.classList.remove("slide-in");
-  storyCharacter.src = `./assets/characters/${key}3.png`;
+  storyCharacterFrame.classList.add("is-loading");
+  storyCharacter.onload = () => {
+    storyCharacterFrame.classList.remove("is-loading");
+    requestAnimationFrame(() => {
+      storyCharacter.classList.add("slide-in");
+    });
+  };
+  storyCharacter.onerror = () => {
+    storyCharacterFrame.classList.remove("is-loading");
+  };
+  storyCharacter.src = roleImageSrc;
   storyCharacter.alt = `${member.name} 캐릭터`;
   storyName.textContent = member.name;
   storyRole.textContent = member.role;
   storyText.textContent = storyCopy[key];
   storyCount.textContent = `${storyIndex + 1} / ${storyOrder.length}`;
-  requestAnimationFrame(() => {
-    storyCharacter.classList.add("slide-in");
-  });
+  primeNearbyStoryImages(storyIndex);
+  if (storyCharacter.complete) storyCharacter.onload();
 }
 
 function openStorySequence() {
@@ -233,6 +265,7 @@ storyNext.addEventListener("click", () => {
 whyNext.addEventListener("click", () => {
   playSfx(cursorSfx, 0.55);
   whyModal.close();
+  loadDeferredImages(mapleModal);
   mapleModal.showModal();
 });
 mapleNext.addEventListener("click", () => {
@@ -260,17 +293,20 @@ function playEndingTypewriter() {
 deliverNext.addEventListener("click", () => {
   playSfx(cursorSfx, 0.55);
   deliverModal.close();
+  loadDeferredImages(closingModal);
   closingModal.showModal();
   playEndingTypewriter();
 });
 
 const bgm = document.querySelector("#bgm");
 const soundToggle = document.querySelector("#sound-toggle");
-let bgmWanted = true;
+const bgmSource = "./assets/bgm.mp3";
+let bgmWanted = false;
 
 async function tryPlayBgm() {
   if (!bgmWanted) return;
   try {
+    if (!bgm.src) bgm.src = bgmSource;
     bgm.volume = 0.55;
     await bgm.play();
     soundToggle.textContent = "♪ BGM ON";
@@ -279,12 +315,6 @@ async function tryPlayBgm() {
     soundToggle.textContent = "♪ BGM 대기";
     soundToggle.setAttribute("aria-pressed", "false");
   }
-}
-
-function unlockBgmOnce() {
-  tryPlayBgm();
-  window.removeEventListener("pointerdown", unlockBgmOnce);
-  window.removeEventListener("keydown", unlockBgmOnce);
 }
 
 soundToggle.addEventListener("click", async () => {
@@ -306,8 +336,6 @@ introStart.addEventListener("click", () => {
   document.body.classList.add("intro-started");
   centerActiveCharacter();
   playSfx(introLogoSfx, 0.78);
-  bgmWanted = true;
-  tryPlayBgm();
 });
 
 window.addEventListener("load", centerActiveCharacter);
@@ -330,7 +358,4 @@ document.addEventListener("click", (event) => {
   playSfx(cursorSfx, 0.55);
 });
 
-tryPlayBgm();
-window.addEventListener("pointerdown", unlockBgmOnce);
-window.addEventListener("keydown", unlockBgmOnce);
 selectMember(selectedKey);

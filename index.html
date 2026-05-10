@@ -3,19 +3,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preload" href="./assets/fantasy-village-bg.png" as="image" fetchpriority="high">
-    <link rel="preload" href="./assets/characters/hyoyeol3.png" as="image">
-    <link rel="preload" href="./assets/characters/gyeongjun3.png" as="image">
-    <link rel="preload" href="./assets/characters/sangeun3.png" as="image">
-    <link rel="preload" href="./assets/characters/jaegyun3.png" as="image">
-    <link rel="preload" href="./assets/characters/yeyoung3.png" as="image">
+    <link rel="preload" href="./assets/fantasy-village-bg.webp" as="image" fetchpriority="high">
     <title>오합zl존 | 메커톤 캐릭터 선택</title>
     <meta name="description" content="오합zl존 메커톤 게임형 웹 포트폴리오">
     <link rel="stylesheet" href="./styles.css">
   </head>
   <body>
     <div class="intro-flash">
-      <img src="./assets/ohapzone-title.png" alt="">
+      <img src="./assets/ohapzone-title.webp" alt="">
       <button class="intro-start" type="button" id="intro-start">CLICK TO START</button>
     </div>
     <div class="intro-narration" aria-hidden="true">
@@ -30,7 +25,7 @@
 
     <main class="select-scene" aria-label="오합zl존 캐릭터 선택 화면">
       <div class="scene-stage">
-        <img class="world-bg" src="./assets/fantasy-village-bg.png" alt="" fetchpriority="high" decoding="async">
+        <img class="world-bg" src="./assets/fantasy-village-bg.webp" alt="" fetchpriority="high" decoding="async">
         <div class="scene-shade" aria-hidden="true"></div>
 
         <header class="wood-header">
@@ -40,7 +35,7 @@
         <p class="version">Ver. 1.0.0</p>
 
         <section class="stone-logo">
-          <img src="./assets/ohapzone-title.png" alt="오합zl존 OHAPZONE">
+          <img src="./assets/ohapzone-title.webp" alt="오합zl존 OHAPZONE">
         </section>
 
         <aside class="portal-label">
@@ -56,7 +51,7 @@
         <section class="character-row" aria-label="팀원 캐릭터">
           <button class="character-slot" type="button" data-member="hyoyeol">
             <span class="character-platform"></span>
-            <img class="character-img" src="./assets/characters/hyoyeol.png" alt="김효열 캐릭터">
+            <img class="character-img" src="./assets/characters/hyoyeol.webp" alt="김효열 캐릭터">
             <span class="fallback-sprite adel" aria-hidden="true"></span>
             <span class="name-plate"><em>아델</em> 김효열</span>
             <span class="mini-card">
@@ -70,7 +65,7 @@
 
           <button class="character-slot" type="button" data-member="gyeongjun">
             <span class="character-platform"></span>
-            <img class="character-img" src="./assets/characters/gyeongjun.png" alt="문경준 캐릭터">
+            <img class="character-img" src="./assets/characters/gyeongjun.webp" alt="문경준 캐릭터">
             <span class="fallback-sprite luminous" aria-hidden="true"></span>
             <span class="name-plate"><em>루미너스</em> 문경준</span>
             <span class="mini-card">
@@ -84,7 +79,7 @@
 
           <button class="character-slot active" type="button" data-member="sangeun">
             <span class="character-platform"></span>
-            <img class="character-img" src="./assets/characters/sangeun.png" alt="이상은 캐릭터">
+            <img class="character-img" src="./assets/characters/sangeun.webp" alt="이상은 캐릭터">
             <span class="fallback-sprite phantom" aria-hidden="true"></span>
             <span class="name-plate"><em>팬텀</em> 이상은</span>
             <span class="mini-card">
@@ -98,7 +93,7 @@
 
           <button class="character-slot" type="button" data-member="jaegyun">
             <span class="character-platform"></span>
-            <img class="character-img" src="./assets/characters/jaegyun.png" alt="이재균 캐릭터">
+            <img class="character-img" src="./assets/characters/jaegyun.webp" alt="이재균 캐릭터">
             <span class="fallback-sprite mechanic" aria-hidden="true"></span>
             <span class="name-plate"><em>메카닉</em> 이재균</span>
             <span class="mini-card">
@@ -112,7 +107,7 @@
 
           <button class="character-slot" type="button" data-member="yeyoung">
             <span class="character-platform"></span>
-            <img class="character-img" src="./assets/characters/yeyoung.png" alt="임예영 캐릭터">
+            <img class="character-img" src="./assets/characters/yeyoung.webp" alt="임예영 캐릭터">
             <span class="fallback-sprite pattern" aria-hidden="true"></span>
             <span class="name-plate"><em>팬텀</em> 임예영</span>
             <span class="mini-card">
@@ -140,14 +135,14 @@
         <nav class="game-nav" aria-label="게임형 포트폴리오 조작">
           <button class="nav-button muted" type="button">← 이전으로</button>
           <button class="start-button" type="button" id="open-project" aria-label="게임 시작">
-            <img src="./assets/start-button.png" alt="">
+            <img src="./assets/start-button.webp" alt="">
           </button>
           <a class="nav-button" href="#story-log">다음으로 →</a>
         </nav>
 
-        <button class="sound-toggle" type="button" id="sound-toggle" aria-pressed="true">♪ BGM ON</button>
+        <button class="sound-toggle" type="button" id="sound-toggle" aria-pressed="false">♪ BGM 대기</button>
       </div>
-      <audio id="bgm" src="./assets/bgm.mp3" loop preload="auto" autoplay></audio>
+      <audio id="bgm" loop preload="none"></audio>
     </main>
 
     <section class="story-log" id="story-log">
@@ -230,7 +225,7 @@
           <p id="modal-role">개발 · 건설 / 프론트엔드</p>
         </div>
         <figure class="modal-part-visual">
-          <img id="modal-part-image" src="./assets/characters/sangeun3.png" alt="이상은 담당 파트 이미지">
+          <img id="modal-part-image" alt="이상은 담당 파트 이미지">
         </figure>
       </div>
       <div class="modal-body" id="modal-body"></div>
@@ -242,7 +237,7 @@
       </form>
       <div class="story-modal-inner">
         <div class="story-character-frame">
-          <img id="story-character" src="./assets/characters/hyoyeol.png" alt="">
+          <img id="story-character" alt="">
         </div>
         <article class="story-detail">
           <p class="story-kicker">OUR STORY</p>
@@ -300,11 +295,11 @@
         <button class="story-close" aria-label="닫기">×</button>
       </form>
       <div class="memory-strip" aria-hidden="true">
-        <img src="./assets/memories/hyoyeol.png" alt="">
-        <img src="./assets/memories/gyeongjun.png" alt="">
-        <img src="./assets/memories/sangeun.jpg" alt="">
-        <img src="./assets/memories/jaegyun.png" alt="">
-        <img src="./assets/memories/yeyoung.png" alt="">
+        <img data-src="./assets/memories/hyoyeol.webp" alt="">
+        <img data-src="./assets/memories/gyeongjun.webp" alt="">
+        <img data-src="./assets/memories/sangeun.webp" alt="">
+        <img data-src="./assets/memories/jaegyun.webp" alt="">
+        <img data-src="./assets/memories/yeyoung.webp" alt="">
       </div>
       <div class="chapter-window">
         <div class="chapter-title">
@@ -354,11 +349,11 @@
       </form>
       <div class="ending-window">
         <div class="ending-party" aria-hidden="true">
-          <img src="./assets/characters/hyoyeol.png" alt="">
-          <img src="./assets/characters/gyeongjun.png" alt="">
-          <img src="./assets/characters/sangeun.png" alt="">
-          <img src="./assets/characters/jaegyun.png" alt="">
-          <img src="./assets/characters/yeyoung.png" alt="">
+          <img data-src="./assets/characters/hyoyeol.webp" alt="">
+          <img data-src="./assets/characters/gyeongjun.webp" alt="">
+          <img data-src="./assets/characters/sangeun.webp" alt="">
+          <img data-src="./assets/characters/jaegyun.webp" alt="">
+          <img data-src="./assets/characters/yeyoung.webp" alt="">
         </div>
         <div class="ending-dialogue narration-box">
           <h2>마지막 퀘스트</h2>
