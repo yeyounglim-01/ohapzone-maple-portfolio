@@ -514,11 +514,11 @@ body.intro-started .intro-narration {
 }
 
 .character-row.is-hovering .character-slot:not(.is-hovered) {
-  opacity: 0.28;
+  opacity: 1;
   filter:
-    brightness(0.36)
-    saturate(0.42)
-    contrast(0.92)
+    brightness(0.38)
+    saturate(0.56)
+    grayscale(0.28)
     drop-shadow(0 10px 10px rgba(0, 0, 0, 0.42));
 }
 
