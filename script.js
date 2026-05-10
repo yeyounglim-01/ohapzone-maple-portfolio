@@ -154,8 +154,14 @@ function centerActiveCharacter() {
   activeSlot?.scrollIntoView({ behavior: "auto", block: "nearest", inline: "center" });
 }
 
+function clearCharacterHoverState() {
+  characterRow?.classList.remove("is-hovering");
+  slots.forEach((slot) => slot.classList.remove("is-hovered"));
+}
+
 function openProjects(key) {
   const member = members[key];
+  clearCharacterHoverState();
   modalName.textContent = member.name;
   modalJob.textContent = member.job;
   modalRole.textContent = member.role;
@@ -187,6 +193,7 @@ function renderStory(index) {
 function openStorySequence() {
   if (!canUseSelectScene()) return;
   playSfx(selectSfx);
+  clearCharacterHoverState();
   renderStory(0);
   storyModal.showModal();
 }
@@ -206,8 +213,32 @@ slots.forEach((slot) => {
     slot.classList.toggle("has-image", img.naturalWidth > 0);
     slot.classList.toggle("missing-image", img.naturalWidth === 0);
   }
-  slot.addEventListener("mouseenter", () => selectMember(key));
-  slot.addEventListener("focus", () => selectMember(key));
+  slot.addEventListener("mouseenter", () => {
+    if (!mobileCharacterQuery.matches) {
+      characterRow.classList.add("is-hovering");
+      slot.classList.add("is-hovered");
+    }
+    selectMember(key);
+  });
+  slot.addEventListener("mouseleave", () => {
+    slot.classList.remove("is-hovered");
+    if (!characterRow.querySelector(".character-slot.is-hovered")) {
+      characterRow.classList.remove("is-hovering");
+    }
+  });
+  slot.addEventListener("focus", () => {
+    if (!mobileCharacterQuery.matches) {
+      characterRow.classList.add("is-hovering");
+      slot.classList.add("is-hovered");
+    }
+    selectMember(key);
+  });
+  slot.addEventListener("blur", () => {
+    slot.classList.remove("is-hovered");
+    if (!characterRow.querySelector(".character-slot.is-hovered")) {
+      characterRow.classList.remove("is-hovering");
+    }
+  });
   slot.addEventListener("click", () => {
     if (!canUseSelectScene()) return;
     playSfx(selectSfx);
@@ -215,6 +246,8 @@ slots.forEach((slot) => {
     openProjects(key);
   });
 });
+
+mobileCharacterQuery.addEventListener("change", clearCharacterHoverState);
 
 document.querySelector("#open-project").addEventListener("click", openStorySequence);
 storyPrev.addEventListener("click", () => {
