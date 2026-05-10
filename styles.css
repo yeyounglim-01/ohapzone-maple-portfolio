@@ -2010,6 +2010,11 @@ body:not(.intro-complete) .fallback-sprite {
 
 .ending-window {
   min-height: 560px;
+  max-height: calc(100svh - 32px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   display: grid;
   align-content: end;
   padding: 34px 32px 42px;
@@ -2244,18 +2249,30 @@ body:not(.intro-complete) .fallback-sprite {
   }
 
   .ending-party {
-    height: 150px;
+    height: clamp(104px, 28svh, 150px);
   }
 
   .ending-window {
-    min-height: 520px;
-    padding: 22px 18px 24px;
+    min-height: 0;
+    max-height: calc(100svh - 32px);
+    align-content: end;
+    padding: 18px 14px 20px;
   }
 
   .ending-party img {
-    width: min(120px, 25vw);
-    max-height: 145px;
-    margin-inline: -12px;
+    width: min(96px, 21vw);
+    max-height: 128px;
+    margin-inline: -10px;
+  }
+
+  .ending-dialogue {
+    width: min(100%, calc(100vw - 56px));
+    padding: 14px 16px 16px;
+  }
+
+  .ending-dialogue p {
+    font-size: clamp(16px, 4.4vw, 22px);
+    line-height: 1.55;
   }
 
   .wood-header {
